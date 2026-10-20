@@ -1,0 +1,17 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', headless: true });
+const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
+const errors = [];
+page.on('pageerror', error => errors.push(error.message));
+await page.goto('http://127.0.0.1:4173/products', { waitUntil: 'domcontentloaded' });
+await page.getByRole('button', { name: /View technical profile/i }).first().click();
+await page.waitForURL(/\/products\/industrial-ribbon-blender$/);
+const productUrl = page.url();
+await page.goBack();
+await page.waitForURL(/\/products$/);
+await page.goto('http://127.0.0.1:4173/categories/mixing-blending', { waitUntil: 'domcontentloaded' });
+const categoryHeading = await page.getByRole('heading', { level: 1 }).innerText();
+await page.goto('http://127.0.0.1:4173/admin', { waitUntil: 'domcontentloaded' });
+const adminHeading = await page.getByRole('heading', { name: 'Dashboard' }).innerText();
+console.log(JSON.stringify({ productUrl, backNavigation: true, categoryHeading, adminHeading, errors }));
+await browser.close();

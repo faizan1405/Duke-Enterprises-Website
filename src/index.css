@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource/ibm-plex-mono";
+
+@theme {
+  --font-display: "Space Grotesk Variable", sans-serif;
+  --font-sans: "DM Sans Variable", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --color-ivory: #f7f5f0;
+  --color-paper: #fffefa;
+  --color-mineral: #e5e7e2;
+  --color-graphite: #252927;
+  --color-teal: #0d6768;
+  --color-coral: #e27b50;
+  --color-mint: #eaf2ef;
+  --color-whatsapp: #1f9d58;
+}
+
+:root { font-family: var(--font-sans); color: #252927; background: #f7f5f0; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; overflow-x: hidden; background: #f7f5f0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible { outline: 2px solid #0d6768; outline-offset: 3px; }
+::selection { background: #d9c1a8; color: #252927; }
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #eeece6; }
+::-webkit-scrollbar-thumb { background: #b8b5ad; border: 2px solid #eeece6; border-radius: 999px; }
+.shell { width: calc(100% - 2rem); max-width: 80rem; margin-inline: auto; }
+.eyebrow { display: inline-flex; align-items: center; gap: .65rem; color: #0d6768; font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 1.75rem; height: 2px; background: #e27b50; }
+.display-title { font-family: var(--font-display); letter-spacing: -.06em; line-height: .94; }
+.technical-grid { background-image: linear-gradient(rgba(37,41,39,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(37,41,39,.045) 1px, transparent 1px); background-size: 36px 36px; }
+.machine-shadow { filter: drop-shadow(0 28px 24px rgba(44,42,36,.17)); }
+.reveal { animation: rise .75s cubic-bezier(.2,.8,.2,1) both; }
+.reveal-delay { animation-delay: .14s; }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
